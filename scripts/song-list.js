@@ -18,6 +18,6 @@
       player.playPause(song);
     });
 
-        $('#song-list').append(song.element);
+    $('#song-list').append(song.element);
   });
 }
