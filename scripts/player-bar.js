@@ -21,7 +21,7 @@ $('button#previous').on('click', function() {
 
 const currentSongIndex = album.songs.indexOf(player.currentlyPlaying);
 const previousSongIndex = currentSongIndex - 1;
-if (currentSongIndex - 1 < 0) { return; }
+if (previousSongIndex < 0) { return; }
 const previousSong = album.songs[previousSongIndex];
 player.playPause(previousSong);
 });
