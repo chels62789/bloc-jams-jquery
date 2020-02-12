@@ -1,6 +1,6 @@
 {
   $('button#play-pause').on('click', function() {
-    player.playPause();
+    helper.playPauseAndUpdate();
     $(this).attr('playState', player.playState);
   });
 
@@ -12,7 +12,7 @@ const nextSongIndex = currentSongIndex + 1;
 if (nextSongIndex >= album.songs.length) { return; }
 
 const nextSong = album.songs[nextSongIndex];
-player.playPause(nextSong);
+helper.playPauseAndUpdate(nextSong);
   });
 
 
@@ -21,9 +21,9 @@ $('button#previous').on('click', function() {
 
 const currentSongIndex = album.songs.indexOf(player.currentlyPlaying);
 const previousSongIndex = currentSongIndex - 1;
-if (currentSongIndex - 1 < 0) { return; }
+if (previousSongIndex < 0) { return; }
 const previousSong = album.songs[previousSongIndex];
-player.playPause(previousSong);
+helper.playPauseAndUpdate(previousSong);
 });
 
 $('#time-control input').on('input', function (event) {
@@ -38,19 +38,9 @@ $('#time-control input').on('input', function (event) {
     $('#time-control .current-time').text( currentTime );
     $('#time-control input').val(percent);
   }, 1000);
-
-
   $('#volume-control input').on('input', function (event) {
 
 
-    setInterval( () => {
-      if (player.playState !== 'playing') { return; }
-      const volumeLow = player.getVolume();
-      const volumeHigh = player.getVolume();
-      const percent = (volumeLow / volumeHigh) * 100;
-      $('#volume-control .current-volume').text( currentVolume );
-      $('#volume-control input').val(percent);
-    }, 1000);
 
   });
 }
