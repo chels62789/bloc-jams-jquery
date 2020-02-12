@@ -38,8 +38,9 @@ $('#time-control input').on('input', function (event) {
     $('#time-control .current-time').text( currentTime );
     $('#time-control input').val(percent);
   }, 1000);
-  $('#volume-control input').on('input', function (event) {
 
+  $('#volume-control input').on('input', function (event) {
+helper.playPauseAndUpdate ();
 
 
   });
