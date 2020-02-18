@@ -40,8 +40,8 @@ $('#time-control input').on('input', function (event) {
   }, 1000);
 
   $('#volume-control input').on('input', function (event) {
-helper.playPauseAndUpdate ();
-
+    player.setVolume(event.target.value);
+  
 
   });
 }
